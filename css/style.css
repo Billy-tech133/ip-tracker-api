@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+* ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    overscroll-behavior: none;
+}
+html {
+    margin: 0;
+    min-width: 100vw;
+}
+body {
+    /* position: relative; */
+    margin: 0;
+    font-family: 'Rubik', sans-serif;
+}
+
+
+:root {
+    --grey-1: hsl(0, 0%, 17%);
+    --grey-2: hsl(0, 0%, 59%);
+    --white: #fff;
+    --black: #000000;
+}
+#mapid { 
+    height: 60vh; 
+    z-index: -1;
+}
+.ip-header {
+    text-align: center;
+  
+    height: 40vh;
+    width: 100%;
+    background-image: url(../images/pattern-bg.png);
+    background-size: cover;
+    
+}
+ 
+.ip-header > h2 {
+    color: var(--white);
+    padding: 20px 0;
+}
+
+.ip-search {
+    padding-left: 20px;
+    margin: auto;
+    width: auto;
+    max-width: 400px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 15px;
+    background-color: var(--white);
+    cursor: pointer;
+}
+
+input {
+    margin: 0;
+    border: none;
+    background-color: transparent;
+    width: 200px;
+    outline: none;
+}
+
+ .search-button {
+    border: none;
+    margin: 0;
+    padding: 0 20px;
+    background-color: var(--black);
+    height: 40px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    cursor: pointer;
+}
+.search-button:hover {
+    background-color: var(--grey-1);
+}
+.ip-details {
+    position: absolute;
+    background-color: var(--white);
+    text-align: center;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+    height: auto;
+    width: 200px;
+    font-size: 15px;
+    color: var(--grey-2)
+}
+
+@media screen and (min-width: 760px){
+    .ip-details {
+        display: flex;
+        top: 42%;
+        justify-content: space-evenly;
+        width: 80vw;
+        max-width: 800px;
+    }
+}
