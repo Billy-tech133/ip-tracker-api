@@ -6,7 +6,7 @@ const locationDisplay = document.querySelector(".location-data");
 const timezoneDisplay = document.querySelector(".timezone-data");
 const ispDisplay = document.querySelector(".isp-data");
 // map
-var mymap = L.map("mapid").setView([51.505, -0.09], 13);
+var mymap = L.map("mapid").setView([34.04915, -118.09462], 13);
 
 // marker
 var customIcons = L.icon({
@@ -21,12 +21,12 @@ var markerOptions = {
 };
 
 // tile
-L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution:
-    'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-  maxZoom: 10,
+    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  maxZoom: 20,
 }).addTo(mymap);
-var marker = L.marker([51.505, -0.09], markerOptions);
+var marker = L.marker([34.04915, -118.09462], markerOptions);
 marker.addTo(mymap);
 
 // declaring variables
@@ -45,6 +45,7 @@ const getData = async () => {
   return data;
 };
 
+// map functionality
 async function displayMap() {
   const data = await getData();
   console.log(data);
@@ -53,17 +54,20 @@ async function displayMap() {
   marker.setLatLng([location.lat, location.lng]);
 }
 
+// displaying data
 async function displayData() {
   const data = await getData();
   const { location, ip, isp } = data;
   console.log(data);
   ipDisplay.textContent = ip;
-  locationDisplay.textContent = location.city;
+  locationDisplay.textContent = `${location.city}, ${location.region}`;
   timezoneDisplay.textContent = `UTC ${location.timezone}`;
   ispDisplay.textContent = isp;
 }
-inputButton.addEventListener("click", displayData);
 
-// function displayInfo() {
-
-// }
+// execute function
+function execute() {
+  displayData();
+  displayMap();
+}
+inputButton.addEventListener("click", execute);
